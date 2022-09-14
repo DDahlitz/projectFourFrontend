@@ -12,33 +12,36 @@ const New = (props) => {
         event.preventDefault()
         props.handleCreate(item)
         setItem({name: '', image: '', description: '', price: '', itemType: '' })
+        setItem(emptyItem)
     }
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form className="newForm" onSubmit={handleSubmit}>
             <label htmlFor="name">Name: </label>
-            <input type="text" name="name" value={item.name} onChange={handleChange} />
+            <input className='newBox' type="text" name="name" value={item.name} onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="image">Image: </label>
             <input type="text" name="image" value={item.image} onChange={handleChange} />
+            <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="description">Description: </label>
-            <input type="text" name="description" value={item.description} onChange={handleChange} />
+            <input className='newBox' type="text" name="description" value={item.description} onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="price">Price: </label>
-            <input type="number" name="price" value={item.price} onChange={handleChange} />
+            <input className='newBox' type="number" name="price" value={item.price} onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="itemType">Item Type: </label>
-            <input type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
-            <input type="submit"/>
+            <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
+            <input className='newButton' type="submit"/>
       </form>
     </>
     )
 }
 
 export default New
+
