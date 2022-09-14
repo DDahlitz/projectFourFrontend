@@ -16,27 +16,27 @@ const Edit = (props) => {
     <>
         <details>
             <summary>Edit item</summary>
-            <form onSubmit={handleSubmit}>
+            <form className="editForm" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
-                <input type="text"  name="name" value={item.name} onChange={handleChange}/>
+                <input className="editBox" type="text"  name="name" value={item.name} onChange={handleChange}/>
                 <br/>
                 <br/>
                 <label htmlFor="image">Image:</label>
-                <input type="text" name="image" value={item.image} onChange={handleChange}/>
+                <input className="editBox" type="text" name="image" value={item.image} onChange={handleChange}/>
                 <br/>
                 <br/>
                 <label htmlFor="description">Description:</label>
-                <input type="text" name="description" value={item.description} onChange={handleChange}/>
+                <input className="editBox" type="text" name="description" value={item.description} onChange={handleChange}/>
                 <br/>
                 <br/>
                 <label htmlFor="price">Price:</label>
-                <input type="number" name="price" value={item.price} onChange={handleChange}/>
+                <input className="editBox" type="number" name="price" value={item.price} onChange={handleChange}/>
                 <br/>
                 <br/>
                 <label htmlFor="itemType">Input type:</label>
-                <input type="text" name="inputType" value={item.inputType} onChange={handleChange}/>
+                <input className="editBox" type="text" name="inputType" value={item.inputType} onChange={handleChange}/>
                 <br/>
-                <input type="submit"/> 
+                <input className="editButton" type="submit"/> 
             </form>
         </details>
     </>

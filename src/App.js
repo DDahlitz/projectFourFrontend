@@ -2,14 +2,15 @@ import './App.css'
 import {useState, useEffect, isValidElement} from 'react'
 import React from 'react'
 import axios from 'axios'
-import './App.css';
+
 import Edit from './components/Edit'
+
 import New from './components/New'
+
 
 const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
-
 
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
@@ -35,24 +36,24 @@ const handleDelete = (deletedItem) => {
 }
 
 const handleUpdate = (editItem) => {
-  axios.put('http://localhost:8000/api/products/' + editItem.id, editItem)
+  axios.delete('http://localhost:8000/api/products/' + editItem.id, editItem)
   .then((response) => {
     setProducts(products.map((item) => {
-      return item.id !== editItem.id ? item : editItem
+      return isValidElement.id !== response.data.id ? item : editItem
     }))
   })
 }
-
 
 
 useEffect(() => {
   getProducts()
 }, []) 
 
+
   return (
     <>
     <h1>Header</h1>
-    <New handleCreate={handleCreate}/>
+    
     <div>
     {products.map((item) => {
       return (
@@ -71,9 +72,6 @@ useEffect(() => {
     </>
   )
 }
-
-
-
 
 export default App;
 
