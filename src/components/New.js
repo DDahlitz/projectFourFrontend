@@ -11,16 +11,8 @@ const New = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
-<<<<<<< HEAD
-
-        setItem(emptyItem)
-
-        setItem({name: '', image: '', description: '', price: '', itemType: '' })
-
-=======
         setItem({name: '', image: '', description: '', price: '', itemType: '' })
         setItem(emptyItem)
->>>>>>> 2f0417b061b4367b6f41994786a72c098df9337c
     }
 
     return (
@@ -31,16 +23,8 @@ const New = (props) => {
             <br />
             <br />
             <label htmlFor="image">Image: </label>
-<<<<<<< HEAD
-
-            <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
-
-            <input type="text" name="image" value={item.image} onChange={handleChange} />
-
-=======
             <input type="text" name="image" value={item.image} onChange={handleChange} />
             <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
->>>>>>> 2f0417b061b4367b6f41994786a72c098df9337c
             <br />
             <br />
             <label htmlFor="description">Description: </label>

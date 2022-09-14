@@ -30,13 +30,6 @@ const AddUser = (props) => {
             </form>
         </>
     )
-<<<<<<< HEAD
-  
-}
-
-export default AddUser
-=======
 }
 
 export default AddUser;
->>>>>>> 2f0417b061b4367b6f41994786a72c098df9337c
