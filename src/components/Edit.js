@@ -22,7 +22,11 @@ const Edit = (props) => {
                 <br/>
                 <br/>
                 <label htmlFor="image">Image:</label>
+<<<<<<< HEAD
                 <input className="editBox" type="text" name="image" value={item.image} onChange={handleChange}/>
+=======
+                <input type="text" name="image" value={item.image} onChange={handleChange}/>
+>>>>>>> 519cfe620ac820250f111725e556b7312e36f88e
                 <br/>
                 <br/>
                 <label htmlFor="description">Description:</label>
@@ -33,10 +37,16 @@ const Edit = (props) => {
                 <input className="editBox" type="number" name="price" value={item.price} onChange={handleChange}/>
                 <br/>
                 <br/>
+<<<<<<< HEAD
                 <label htmlFor="itemType">Input type:</label>
                 <input className="editBox" type="text" name="inputType" value={item.inputType} onChange={handleChange}/>
                 <br/>
                 <input className="editButton" type="submit"/> 
+=======
+                <label htmlFor="itemType">Item type:</label>
+                <input type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
+                <input type="submit" />
+>>>>>>> 519cfe620ac820250f111725e556b7312e36f88e
             </form>
         </details>
     </>

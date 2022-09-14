@@ -11,7 +11,11 @@ const New = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
+<<<<<<< HEAD
         setItem(emptyItem)
+=======
+        setItem({name: '', image: '', description: '', price: '', itemType: '' })
+>>>>>>> 519cfe620ac820250f111725e556b7312e36f88e
     }
 
     return (
@@ -22,7 +26,11 @@ const New = (props) => {
             <br />
             <br />
             <label htmlFor="image">Image: </label>
+<<<<<<< HEAD
             <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
+=======
+            <input type="text" name="image" value={item.image} onChange={handleChange} />
+>>>>>>> 519cfe620ac820250f111725e556b7312e36f88e
             <br />
             <br />
             <label htmlFor="description">Description: </label>
