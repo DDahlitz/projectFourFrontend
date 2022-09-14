@@ -4,6 +4,7 @@ import React from 'react'
 import axios from 'axios'
 import './App.css';
 import Edit from './components/Edit'
+import New from './components/New'
 
 const App = () => {
   const [users, setUsers] = useState([])
@@ -34,10 +35,10 @@ const handleDelete = (deletedItem) => {
 }
 
 const handleUpdate = (editItem) => {
-  axios.delete('http://localhost:8000/api/products/' + editItem.id, editItem)
+  axios.put('http://localhost:8000/api/products/' + editItem.id, editItem)
   .then((response) => {
     setProducts(products.map((item) => {
-      return isValidElement.id !== response.data.id ? item : editItem
+      return item.id !== editItem.id ? item : editItem
     }))
   })
 }
@@ -51,7 +52,7 @@ useEffect(() => {
   return (
     <>
     <h1>Header</h1>
-    
+    <New handleCreate={handleCreate}/>
     <div>
     {products.map((item) => {
       return (
