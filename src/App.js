@@ -57,11 +57,8 @@ useEffect(() => {
   return (
     <>
     <h1>Header</h1>
-<<<<<<< HEAD
-=======
     <New handleCreate={handleCreate} />
     <div>
->>>>>>> cc3e522c912ad2f9a0da4ae49a9d3016762ceda9
     {products.map((item) => {
       return (
         <div key = {item.id}>
@@ -70,11 +67,8 @@ useEffect(() => {
           <h6> Description: {item.description} </h6>
           <h4> Price: {item.price} </h4>
           <h5> Item Type: {item.itemType} </h5>
-<<<<<<< HEAD
-=======
           <Edit handleUpdate={handleUpdate} item={item} />
           <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
->>>>>>> cc3e522c912ad2f9a0da4ae49a9d3016762ceda9
         </div>
       )
     })}
