@@ -2,20 +2,11 @@ import './App.css'
 import {useState, useEffect} from 'react'
 import React from 'react'
 import axios from 'axios'
-
-<<<<<<< HEAD
 import './App.css';
-import axios from 'axios';
-import {useState, useEffect}  from 'react';
 
-const App = () => {
-  
-  return (
-    <h1>HEader</h1>
-  )
-}
-export default App;
-=======
+
+
+
 // import New from './components/New'
 // import Edit from './components/Edit'
 
@@ -61,4 +52,3 @@ useEffect(() => {
 
 
 export default App;
->>>>>>> 0716335d417b9c7f93f30bf6eccf18ea1c39bcc9
