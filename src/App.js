@@ -11,12 +11,19 @@ const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
 
+
+
+
+// ========GET PRODUCTS=======
+
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
     (response) => setProducts(response.data),
     (err) => console.error(err),
   ).catch((error) => console.error(error))
 }
+
+// ========    CREATE PRODUCTS   =======
 
 const handleCreate = (addItem) => {
   let nextId = products[products.length - 1].id + 1
@@ -27,6 +34,8 @@ const handleCreate = (addItem) => {
     })
 }
 
+// ========    DELETE PRODUCTS   =======
+
 const handleDelete = (deletedItem) => {
   axios.delete('http://localhost:8000/api/products/' + deletedItem.id)
   .then ((response) => {
@@ -34,14 +43,74 @@ const handleDelete = (deletedItem) => {
   })
 }
 
+// ========    UPDATE PRODUCTS   =======
+
 const handleUpdate = (editItem) => {
   axios.put('http://localhost:8000/api/products/' + editItem.id, editItem)
   .then((response) => {
     setProducts(products.map((item) => {
       return item.id !== editItem.id ? item : editItem
-    }))
+    })) 
   })
 }
+
+// ======== CREATE NEW USER =======
+
+const handleNewUser = (addUser) => {
+  axios.post('http://localhost:8000/api/useraccount', addUser)
+  .then(response => {
+    setNewUser([...newUser, response.data],
+      (err) => console.error(err))
+      alert('Account created, proceed to login with newly created account')
+  }).catch((error) => alert('This email is already in use. Please try again with a different email address'))
+}
+
+
+// ======== USER LOGIN =======
+
+const handleLogin = (findUser) => {
+  axios.put('http://localhost:8000/api/useraccount/login', findUser)
+  .then((response) => {
+    if(response.data.email == null) {
+      alert('The Email and Password do not match')
+    } else {
+      setUsers(response.data)
+      axios
+      .get('http://localhost:8000/api/useraccount/' + response.data.id)
+      .then((response) => {
+        setCurrentUser(response.data)
+      })
+      // setShowRecord(true)
+      // setLoginSuccess(false)
+      // console.log(response.data)
+    }
+  })
+}
+
+// ======== DELETE USER AND ALL ASSOCIATED PRODUCTS =======
+
+const handleDeleteUser = () => {
+  products.filter((deletedProducts) => {
+    if(deletedProducts.email == users.email) {
+      // console.log(deletedProducts.id)
+      axios.delete('http://localhost:8000/api/products/' + deletedProducts.id)
+    }
+  })
+  axios.delete('http://localhost:8000/api/useraccount/' + users.id)
+  // .then(() => {
+  //   setUsers([])
+  //   setCurrentUser([])
+  //   setShowRecord(false)
+  //   setShowLogin(false)
+  //   setLoginHeader(false)
+  // })
+}
+
+
+
+
+
+
 
 
 useEffect(() => {
@@ -52,7 +121,7 @@ useEffect(() => {
   return (
     <>
     <h1>Header</h1>
-    <New handleCreate={handleCreate}/>
+    <New handleCreate={handleCreate} />
     <div>
     {products.map((item) => {
       return (
