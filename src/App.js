@@ -120,7 +120,18 @@ useEffect(() => {
 
   return (
     <>
-    <h1>Header</h1>
+    <h1>Techy</h1>
+    <h2>An application to sell used tech appliances</h2>
+    <h3> Create and Account</h3>
+
+
+    <button> Login </button>
+    <button> Logout </button>
+    
+
+
+
+
     <New handleCreate={handleCreate} />
     <div>
     {products.map((item) => {
