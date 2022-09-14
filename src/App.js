@@ -6,6 +6,7 @@ import axios from 'axios'
 import Edit from './components/Edit'
 import New from './components/New'
 import Login from './components/Login'
+import AddUser from './components/AddUser'
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
   const [showProduct, setShowProduct] = useState(false)
   const [user, setUser] = useState([])
   const [currentUser, setCurrentUser] = useState([])
+  const [newUser, setNewUser] = useState([])
 
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
@@ -70,6 +72,15 @@ const handleLogin = (findUser) => {
   })
 }
 
+const handleNewUser = (addUser) => {
+  axios.post('http://localhost:8000/api/useraccount', addUser)
+  .then(response => {
+    setNewUser([...newUser, response.data],
+    (err) => console.error(err))
+    alert("ACCOUNT CREATED, NOW LOGIN")
+  }).catch((error) => alert('Username already taken'))
+}
+
 useEffect(() => {
   getProducts()
 }, []) 
@@ -119,12 +130,12 @@ const logout = () => {
     </> : null}
     </div>
     <div className="container">
-            {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
+            {displayLogin ? <h2>YOUR TECHY PAGE </h2> : null}
             {showProduct ? <h4>Welcome to Techy, {user.name}!</h4> : null}
             {loginSuccess ? <h5>Log in</h5> : null}
           </div>
       <div className = "loginForm">
-        {show ? <div><h3>NEW USER COMPONENT HERE</h3><hr/></div> : null}
+        {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={ loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <New handleCreate={handleCreate} /> : null}
       </div>

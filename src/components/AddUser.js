@@ -11,13 +11,14 @@ const AddUser = (props) => {
 
     const handleUserSubmit = (e) => {
       e.preventDefault()
+      props.handleNewUser(user)
       setUser(emptyUser)
     }
 
     return (
         <>
             <form className="addUserForm" onSubmit={handleUserSubmit}>
-                <label htmlFor="email">Emal:</label>
+                <label htmlFor="email">Email:</label>
                 <input className="addUserBox" type="text" name="email" value={user.email} onChange={handleUserChange}/>
                 <br/>
                 <br/>
@@ -29,7 +30,13 @@ const AddUser = (props) => {
             </form>
         </>
     )
+<<<<<<< HEAD
   
 }
 
 export default AddUser
+=======
+}
+
+export default AddUser;
+>>>>>>> 2f0417b061b4367b6f41994786a72c098df9337c
