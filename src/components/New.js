@@ -5,12 +5,13 @@ const New = (props) => {
     const [item, setItem] = useState(emptyItem)
 
     const handleChange = (event) => {
-        setItem({...personalbar, [event.target.name]: event.target.value})
+        setItem({...item, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
+        setItem({name: '', image: '', description: '', price: '', itemType: '' })
     }
 
     return (
@@ -21,7 +22,7 @@ const New = (props) => {
             <br />
             <br />
             <label htmlFor="image">Image: </label>
-            <input type="text" name="image" value={item.image} />
+            <input type="text" name="image" value={item.image} onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="description">Description: </label>
