@@ -2,9 +2,11 @@ import './App.css'
 import {useState, useEffect, isValidElement} from 'react'
 import React from 'react'
 import axios from 'axios'
+
+import Edit from './components/Edit'
+
 import New from './components/New'
 
-// import Edit from './components/Edit'
 
 const App = () => {
   const [users, setUsers] = useState([])
@@ -51,7 +53,7 @@ useEffect(() => {
   return (
     <>
     <h1>Header</h1>
-    <New handleCreate={handleCreate} />
+    
     <div>
     {products.map((item) => {
       return (
@@ -72,4 +74,5 @@ useEffect(() => {
 }
 
 export default App;
+
 
