@@ -2,14 +2,16 @@ import './App.css'
 import {useState, useEffect, isValidElement} from 'react'
 import React from 'react'
 import axios from 'axios'
-import './App.css';
+
 import Edit from './components/Edit'
 import New from './components/New'
+
+import New from './components/New'
+
 
 const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
-
 
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
@@ -44,10 +46,10 @@ const handleUpdate = (editItem) => {
 }
 
 
-
 useEffect(() => {
   getProducts()
 }, []) 
+
 
   return (
     <>
@@ -72,9 +74,10 @@ useEffect(() => {
   )
 }
 
-
-
-
 export default App;
 
+<<<<<<< HEAD
 //fsadf
+=======
+
+>>>>>>> 6591a3fdbdbd3e890e2cc2f8e7e71123888327c2
