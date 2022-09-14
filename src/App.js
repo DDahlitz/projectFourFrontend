@@ -5,12 +5,6 @@ import axios from 'axios'
 import './App.css';
 import Edit from './components/Edit'
 
-
-
-import New from './components/New'
-import Edit from './components/Edit'
-
-
 const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
@@ -57,7 +51,7 @@ useEffect(() => {
   return (
     <>
     <h1>Header</h1>
-    <New handleCreate={handleCreate} />
+    
     <div>
     {products.map((item) => {
       return (
