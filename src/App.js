@@ -3,6 +3,9 @@ import {useState, useEffect} from 'react'
 import React from 'react'
 import axios from 'axios'
 
+// import New from './components/New'
+// import Edit from './components/Edit'
+
 
 const App = () => {
   const [users, setUsers] = useState([])
