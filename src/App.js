@@ -2,15 +2,13 @@ import './App.css'
 import {useState, useEffect} from 'react'
 import React from 'react'
 import axios from 'axios'
+import New from './components/New'
 
-// import New from './components/New'
 // import Edit from './components/Edit'
-
 
 const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
-
 
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
@@ -19,6 +17,14 @@ const getProducts = () => {
   ).catch((error) => console.error(error))
 }
 
+const handleCreate = (addItem) => {
+  axios
+    .post('http://localhost:8000/api/products', addItem)
+    .then((response) => {
+      console.log(response)
+      setProducts([...products, response.data])
+    })
+}
 
 
 useEffect(() => {
@@ -27,24 +33,21 @@ useEffect(() => {
 
   return (
     <>
-    <h1>Header</h1>
-    {products.map((product) => {
-      return (
-        <div key = {product.id}>
-          <img src = {product.image} />
-          <h4> Name: {product.name}</h4>
-          <h6> Description: {product.description} </h6>
-          <h4> Price: {product.price} </h4>
-          <h5> Item Type: {product.itemType} </h5>
-        </div>
-      )
-    })}
-
+      <New/>
+      <h1>Header</h1>
+      {products.map((item) => {
+        return (
+          <div key = {item.id}>
+            <img src = {item.image} />
+            <h4> Name: {item.name}</h4>
+            <h6> Description: {item.description} </h6>
+            <h4> Price: {item.price} </h4>
+            <h5> Item Type: {item.itemType} </h5>
+          </div>
+        )
+      })}
     </>
   )
 }
-
-
-
 
 export default App;
