@@ -140,7 +140,7 @@ const logout = () => {
       </div>
       <div>
         {products.filter((potato) => {
-          if (potato.username === user.username) {
+          if (potato.email === user.email) {
             return potato
           }
         })
