@@ -72,8 +72,8 @@ const handleUpdate = (editItem) => {
 const handleLogin = (findUser) => {
   axios.put('http://localhost:8000/api/useraccount/login' , findUser)
   .then((response) => {
-    if (response.data.username == null) {
-      alert('Username and Password Do Not Match')
+    if (response.data.email == null) {
+      alert('Email and Password Do Not Match')
     } else {
       setUser(response.data)
       axios
@@ -154,44 +154,49 @@ const logout = () => {
 }
 
 
-return (
-  <>
-  <div className = 'container'>
-  {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT</h2></div>}
-  {displayLogin ? null : <button className = 'button' onClick={showPage}>Create Account</button>}
-  {displayLogin ? null : <button className='button' onClick={() => {
-          showloginAndHideCreate()
-        } }>Login</button>}
-  {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
-  </> : null}
-  </div>
-  <div className="container">
-          {displayLogin ? <h2>YOUR TECHY PAGE </h2> : null}
-          {showProduct ? <h4>Welcome to Techy, {user.name}!</h4> : null}
-          {loginSuccess ? <h5>Log in</h5> : null}
-        </div>
-    <div className = "loginForm">
-      {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
-      {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={ loginSuccess} goBack={goBack} /> : null}
-      {showProduct ? <New handleCreate={handleCreate} /> : null}
-    </div>
-    <div>
-      {products.map((item) => {
-        return (
-          <div key = {item.id}>
-            <h4> Name: {item.name}</h4>
-            <img src = {item.image} />
-            <h6> Description: {item.description} </h6>
-            <h4> Price: {item.price} </h4>
-            <h5> Item Type: {item.itemType} </h5>
-            <Edit handleUpdate={handleUpdate} item={item} />
-            <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
-          </div>
-        )
-      })}
-    </div>
-  </>
-)
+  return (
+    <>
+      <div className = 'container'>
+        {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT</h2></div>}
+        {displayLogin ? null : <button className = 'button' onClick={showPage}>Create Account</button>}
+        {displayLogin ? null : <button className='button' onClick={() => {
+                showloginAndHideCreate()
+              }}>Login</button>}
+        {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
+        </> : null}
+      </div>
+      <div className="container">
+              {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
+              {showProduct ? <h4>Welcome to Techy, {user.name}!</h4> : null}
+              {loginSuccess ? <h5>Log In Here</h5> : null}
+      </div>
+      <div className = "loginForm">
+        {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
+        {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
+        {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
+      </div>
+      <div>
+        {products.filter((potato) => {
+          if (potato.username === user.username) {
+            return potato
+          }
+        })
+        .map((item) => {
+          return (
+            <div key = {item.id}>
+              <h4> Name: {item.name}</h4>
+              <img src = {item.image} />
+              <h6> Description: {item.description} </h6>
+              <h4> Price: {item.price} </h4>
+              <h5> Item Type: {item.itemType} </h5>
+              <Edit handleUpdate={handleUpdate} item={item} />
+              <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
 }
 
 export default App;
