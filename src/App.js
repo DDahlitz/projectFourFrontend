@@ -10,7 +10,6 @@ import AddUser from './components/AddUser'
 
 
 const App = () => {
-  const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
   const [loginHeader, setLoginHeader] = useState(false)
   const [displayLogin, setDisplayLogin] = useState(false)
