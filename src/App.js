@@ -6,10 +6,22 @@ import axios from 'axios'
 import Edit from './components/Edit'
 import New from './components/New'
 
+import Login from './components/Login'
+import AddUser from './components/AddUser'
+
+
 
 const App = () => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
+  const [loginHeader, setLoginHeader] = useState(false)
+  const [displayLogin, setDisplayLogin] = useState(false)
+  const [show, setShow] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false)
+  const [showProduct, setShowProduct] = useState(false)
+  const [user, setUser] = useState([])
+  const [currentUser, setCurrentUser] = useState([])
+  const [newUser, setNewUser] = useState([])
 
 
 
@@ -46,43 +58,31 @@ const handleDelete = (deletedItem) => {
 // ========    UPDATE PRODUCTS   =======
 
 const handleUpdate = (editItem) => {
-  axios.put('http://localhost:8000/api/products/' + editItem.id, editItem)
-  .then((response) => {
-    setProducts(products.map((item) => {
-      return item.id !== editItem.id ? item : editItem
-    })) 
-  })
-}
-
-// ======== CREATE NEW USER =======
-
-const handleNewUser = (addUser) => {
-  axios.post('http://localhost:8000/api/useraccount', addUser)
-  .then(response => {
-    setNewUser([...newUser, response.data],
-      (err) => console.error(err))
-      alert('Account created, proceed to login with newly created account')
-  }).catch((error) => alert('This email is already in use. Please try again with a different email address'))
+  axios
+    .put('http://localhost:8000/api/products/' + editItem.id, editItem)
+    .then((response) => {
+      setProducts(products.map((item) => {
+        return item.id !== editItem.id ? item : editItem
+      }))
+    })
 }
 
 
-// ======== USER LOGIN =======
 
 const handleLogin = (findUser) => {
-  axios.put('http://localhost:8000/api/useraccount/login', findUser)
+  axios.put('http://localhost:8000/api/useraccount/login' , findUser)
   .then((response) => {
-    if(response.data.email == null) {
-      alert('The Email and Password do not match')
+    if (response.data.username == null) {
+      alert('Username and Password Do Not Match')
     } else {
-      setUsers(response.data)
+      setUser(response.data)
       axios
-      .get('http://localhost:8000/api/useraccount/' + response.data.id)
-      .then((response) => {
+      .get('http://localhost:8000/api/useraccount/' + response.data.id).then((response) => {
         setCurrentUser(response.data)
       })
-      // setShowRecord(true)
-      // setLoginSuccess(false)
-      // console.log(response.data)
+    setShowProduct(true)
+    setLoginSuccess(false)
+    console.log(response.data)
     }
   })
 }
@@ -107,49 +107,91 @@ const handleDeleteUser = () => {
 }
 
 
-
-
-
-
+const handleNewUser = (addUser) => {
+  axios.post('http://localhost:8000/api/useraccount', addUser)
+  .then(response => {
+    setNewUser([...newUser, response.data],
+    (err) => console.error(err))
+    alert("ACCOUNT CREATED, NOW LOGIN")
+  }).catch((error) => alert('Username already taken'))
+}
 
 
 useEffect(() => {
   getProducts()
 }, []) 
 
+const showPage = () => {
+  setLoginHeader(false)
+  setDisplayLogin(false)
+  setShow(true)
+  setShowProduct(false)
+}
 
-  return (
-    <>
-    <h1>Techy</h1>
-    <h2>An application to sell used tech appliances</h2>
-    <h3> Create and Account</h3>
+const showloginAndHideCreate = () => {
+  setDisplayLogin(true)
+  setShow(false)
+  setLoginHeader(true)
+  setLoginSuccess(true)
+}
+
+const showProductInput = () => {
+  setShowProduct(true)
+}
+
+const goBack =() => {
+  setLoginHeader(false)
+  setDisplayLogin(false)
+  setLoginSuccess(false)
+}
+
+const logout = () => {
+  setUser([])
+  setCurrentUser([])
+  setShowProduct(false)
+  setDisplayLogin(false)
+  setLoginHeader(false)
+}
 
 
-    <button> Login </button>
-    <button> Logout </button>
-    
-
-
-
-
-    <New handleCreate={handleCreate} />
-    <div>
-    {products.map((item) => {
-      return (
-        <div key = {item.id}>
-          <img src = {item.image} />
-          <h4> Name: {item.name}</h4>
-          <h6> Description: {item.description} </h6>
-          <h4> Price: {item.price} </h4>
-          <h5> Item Type: {item.itemType} </h5>
-          <Edit handleUpdate={handleUpdate} item={item} />
-          <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+return (
+  <>
+  <div className = 'container'>
+  {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT</h2></div>}
+  {displayLogin ? null : <button className = 'button' onClick={showPage}>Create Account</button>}
+  {displayLogin ? null : <button className='button' onClick={() => {
+          showloginAndHideCreate()
+        } }>Login</button>}
+  {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
+  </> : null}
+  </div>
+  <div className="container">
+          {displayLogin ? <h2>YOUR TECHY PAGE </h2> : null}
+          {showProduct ? <h4>Welcome to Techy, {user.name}!</h4> : null}
+          {loginSuccess ? <h5>Log in</h5> : null}
         </div>
-      )
-    })}
+    <div className = "loginForm">
+      {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
+      {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={ loginSuccess} goBack={goBack} /> : null}
+      {showProduct ? <New handleCreate={handleCreate} /> : null}
     </div>
-    </>
-  )
+    <div>
+      {products.map((item) => {
+        return (
+          <div key = {item.id}>
+            <h4> Name: {item.name}</h4>
+            <img src = {item.image} />
+            <h6> Description: {item.description} </h6>
+            <h4> Price: {item.price} </h4>
+            <h5> Item Type: {item.itemType} </h5>
+            <Edit handleUpdate={handleUpdate} item={item} />
+            <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+          </div>
+        )
+      })}
+    </div>
+  </>
+)
 }
 
 export default App;
