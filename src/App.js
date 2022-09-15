@@ -129,15 +129,13 @@ const logout = () => {
       </div>
       <div className="container">
               {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
-              {showProduct ? <h4>Welcome to Techy, {user.name}!</h4> : null}
+              {showProduct ? <h4>Welcome to Techy, {user.email}!</h4> : null}
               {loginSuccess ? <h5>Log In Here</h5> : null}
       </div>
       <div className = "loginForm">
         {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
-      </div>
-      <div>
         {products.filter((potato) => {
           if (potato.email === user.email) {
             return potato
@@ -156,7 +154,7 @@ const logout = () => {
             </div>
           )
         })}
-      </div>
+          </div>
     </>
   )
 }

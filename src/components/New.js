@@ -13,7 +13,6 @@ const New = (props) => {
         props.handleCreate(item)
         item.email = props.user.email
         setItem({name: '', image: '', description: '', price: '', itemType: '' })
-        setItem(emptyItem)
     }
 
     return (
