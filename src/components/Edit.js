@@ -33,8 +33,8 @@ const Edit = (props) => {
                 <input className="editBox" type="number" name="price" value={item.price} onChange={handleChange}/>
                 <br/>
                 <br/>
-                <label htmlFor="itemType">Input type:</label>
-                <input className="editBox" type="text" name="inputType" value={item.inputType} onChange={handleChange}/>
+                <label htmlFor="itemType">Item type:</label>
+                <input className="editBox" type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
                 <br/>
                 <input className="editButton" type="submit"/> 
             </form>
