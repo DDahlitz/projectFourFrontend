@@ -12,7 +12,6 @@ import AddUser from './components/AddUser'
 
 
 const App = () => {
-  const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
   const [loginHeader, setLoginHeader] = useState(false)
   const [displayLogin, setDisplayLogin] = useState(false)
@@ -91,19 +90,19 @@ const handleLogin = (findUser) => {
 
 const handleDeleteUser = () => {
   products.filter((deletedProducts) => {
-    if(deletedProducts.email == users.email) {
+    if(deletedProducts.email == user.email) {
       // console.log(deletedProducts.id)
       axios.delete('http://localhost:8000/api/products/' + deletedProducts.id)
     }
   })
-  axios.delete('http://localhost:8000/api/useraccount/' + users.id)
-  // .then(() => {
-  //   setUsers([])
-  //   setCurrentUser([])
-  //   setShowRecord(false)
-  //   setShowLogin(false)
-  //   setLoginHeader(false)
-  // })
+  axios.delete('http://localhost:8000/api/useraccount/' + user.id)
+  .then(() => {
+    setUser([])
+    setCurrentUser([])
+    setShowProduct(false)
+    setDisplayLogin(false)
+    setLoginHeader(false)
+  })
 }
 
 
@@ -177,7 +176,7 @@ const logout = () => {
       </div>
       <div>
         {products.filter((potato) => {
-          if (potato.username === user.username) {
+          if (potato.email === user.email) {
             return potato
           }
         })

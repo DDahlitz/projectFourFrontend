@@ -11,6 +11,7 @@ const New = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
+        item.username = props.user.username
         setItem({name: '', image: '', description: '', price: '', itemType: '' })
         setItem(emptyItem)
     }
@@ -23,7 +24,6 @@ const New = (props) => {
             <br />
             <br />
             <label htmlFor="image">Image: </label>
-            <input type="text" name="image" value={item.image} onChange={handleChange} />
             <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
             <br />
             <br />
