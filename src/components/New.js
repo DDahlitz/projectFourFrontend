@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 const New = (props) => {
-    let emptyItem = {name: '', image: '', description: '', price: '', itemType: '' }
+    let emptyItem = {name: '', image: '', description: '', price: '', itemType: '', email:'' }
     const [item, setItem] = useState(emptyItem)
 
     const handleChange = (event) => {
@@ -12,7 +12,7 @@ const New = (props) => {
         event.preventDefault()
         props.handleCreate(item)
         item.email = props.user.email
-        setItem({name: '', image: '', description: '', price: '', itemType: '' })
+        setItem({name: '', image: '', description: '', price: '', itemType: '', email:'' })
     }
 
     return (
