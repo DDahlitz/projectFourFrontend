@@ -29,7 +29,7 @@ const getProducts = () => {
 
 const handleCreate = (addItem) => {
   let nextId = products[products.length - 1].id + 1
-  axios.post('http://localhost:8000/api/products', addItem)
+  axios.post('http://localhost:8000/api/products' , addItem)
     .then((response) => {
       addItem.id = nextId
       setProducts([...products, response.data])
@@ -79,6 +79,8 @@ const handleNewUser = (addUser) => {
     alert("ACCOUNT CREATED, NOW LOGIN")
   }).catch((error) => alert('Username already taken'))
 }
+
+
 
 useEffect(() => {
   getProducts()

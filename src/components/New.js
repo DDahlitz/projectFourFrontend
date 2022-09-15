@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 const New = (props) => {
     let emptyItem = {name: '', image: '', description: '', price: '', itemType: '' }
