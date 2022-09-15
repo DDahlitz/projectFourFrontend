@@ -23,7 +23,7 @@ const AddUser = (props) => {
                 <br/>
                 <br/>
                 <label htmlFor="password">Password:</label>
-                <input className="addUserBox" type="text" name="password" value={user.password} onChange={handleUserChange}/>
+                <input className="addUserBox" type="password" name="password" value={user.password} onChange={handleUserChange}/>
                 <br/>
                 <br/>
                 <input className="addUserButton" type="submit"/>

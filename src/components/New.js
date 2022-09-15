@@ -11,9 +11,8 @@ const New = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
-        item.username = props.user.username
+        item.email = props.user.email
         setItem({name: '', image: '', description: '', price: '', itemType: '' })
-        setItem(emptyItem)
     }
 
     return (
