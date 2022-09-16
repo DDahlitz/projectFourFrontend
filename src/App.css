@@ -73,6 +73,11 @@
   font-size: 12px;
 }
 
+.loginForm {
+  text-align: center;
+  display: inline-block;
+}
+
 label {
   display: inline-block;
   width: 150px;
@@ -99,8 +104,4 @@ button {
 
 .actualCards {
   font-family: 'Chakra Petch', sans-serif;
-}
-
-.container {
-  text-align: center;
 }
