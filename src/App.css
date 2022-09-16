@@ -105,12 +105,3 @@ button {
 .actualCards {
   font-family: 'Chakra Petch', sans-serif;
 }
-
-.container {
-  text-align: center;
-}
-
-.newInput {
-  text-align: center;
-  right: 1px;
-}
