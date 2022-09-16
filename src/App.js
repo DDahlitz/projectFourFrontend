@@ -151,7 +151,7 @@ const logout = () => {
   return (
     <>
       <div className = 'container'>
-        {loginHeader ? null : <div><h1 className = "techy">TECHY</h1><h2 className="createAnAccount">CREATE AN ACCOUNT:</h2></div>}
+        {loginHeader ? null : <div><h1 className = "techy">TECHY</h1><h4 className="createAnAccount">CREATE AN ACCOUNT IN ORDER TO LIST ITEMS:</h4></div>}
         {displayLogin ? null : <button className = 'button btn-outline-dark btn' onClick={showPage}>Create Account</button>}
         {displayLogin ? null : <button className='button btn-outline-dark btn' onClick={() => {
                 showloginAndHideCreate()
@@ -189,7 +189,8 @@ const logout = () => {
                     <p className="card-text">Price: ${item.price}</p>
                     <p className="card-text">Type: {item.itemType}</p>
                         <Edit handleUpdate={handleUpdate} item={item}/>
-                        <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+                        <br/>
+                        <button className = "button btn btn-outline-danger" onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
                   </div>
               </div>
             </div>
