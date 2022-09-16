@@ -5,8 +5,10 @@ import axios from 'axios'
 
 import Edit from './components/Edit'
 import New from './components/New'
+
 import Login from './components/Login'
 import AddUser from './components/AddUser'
+
 
 
 const App = () => {
@@ -20,6 +22,11 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState([])
   const [newUser, setNewUser] = useState([])
 
+
+
+
+// ========GET PRODUCTS=======
+
 const getProducts = () => {
   axios.get('http://localhost:8000/api/products').then(
     (response) => setProducts(response.data),
@@ -27,14 +34,18 @@ const getProducts = () => {
   ).catch((error) => console.error(error))
 }
 
+// ========    CREATE PRODUCTS   =======
+
 const handleCreate = (addItem) => {
-  let nextId = products[products.length - 1].id + 1
+  // let nextId = products[products.length - 1].id + 1
   axios.post('http://localhost:8000/api/products', addItem)
     .then((response) => {
-      addItem.id = nextId
+      // addItem.id = nextId
       setProducts([...products, response.data])
     })
 }
+
+// ========    DELETE PRODUCTS   =======
 
 const handleDelete = (deletedItem) => {
   axios.delete('http://localhost:8000/api/products/' + deletedItem.id)
@@ -42,6 +53,8 @@ const handleDelete = (deletedItem) => {
     setProducts (products.filter( item => item.id !== deletedItem.id))
   })
 }
+
+// ========    UPDATE PRODUCTS   =======
 
 const handleUpdate = (editItem) => {
   axios
@@ -52,6 +65,8 @@ const handleUpdate = (editItem) => {
       }))
     })
 }
+
+
 
 const handleLogin = (findUser) => {
   axios.put('http://localhost:8000/api/useraccount/login' , findUser)
@@ -71,6 +86,26 @@ const handleLogin = (findUser) => {
   })
 }
 
+// ======== DELETE USER AND ALL ASSOCIATED PRODUCTS =======
+
+const handleDeleteUser = () => {
+  products.filter((deletedProducts) => {
+    if(deletedProducts.email == user.email) {
+      // console.log(deletedProducts.id)
+      axios.delete('http://localhost:8000/api/products/' + deletedProducts.id)
+    }
+  })
+  axios.delete('http://localhost:8000/api/useraccount/' + user.id)
+  .then(() => {
+    setUser([])
+    setCurrentUser([])
+    setShowProduct(false)
+    setDisplayLogin(false)
+    setLoginHeader(false)
+  })
+}
+
+
 const handleNewUser = (addUser) => {
   axios.post('http://localhost:8000/api/useraccount', addUser)
   .then(response => {
@@ -79,6 +114,7 @@ const handleNewUser = (addUser) => {
     alert("ACCOUNT CREATED, NOW LOGIN")
   }).catch((error) => alert('Username already taken'))
 }
+
 
 useEffect(() => {
   getProducts()
@@ -112,6 +148,7 @@ const logout = () => {
   setLoginHeader(false)
 }
 
+
   return (
     <>
       <div className = 'container'>
@@ -133,9 +170,16 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
+<<<<<<< HEAD
         {products.filter((potato) => {
           if (potato.email === user.email) {
             return potato
+=======
+        {/* {products.filter((item) => {
+          if (item.useraccount == user.id
+            .map()) {
+            return item
+>>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
           }
         })
         .map((item) => {
@@ -150,9 +194,9 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })}
+        })} */}
 
-        {/* {products.map((item) => {
+        {products.map((item) => {
           return (
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
@@ -164,12 +208,10 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })} */}
+        })}
           </div>
     </>
   )
 }
 
 export default App;
-
-

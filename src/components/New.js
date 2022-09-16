@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 const New = (props) => {
-    let emptyItem = {name: '', image: '', description: '', price: '', itemType: '', email:'' }
+    let emptyItem = {name: '', image: '', description: '', price: '', itemType: '' }
     const [item, setItem] = useState(emptyItem)
 
     const handleChange = (event) => {
@@ -11,8 +11,8 @@ const New = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.handleCreate(item)
-        item.email = props.user.email
-        setItem({name: '', image: '', description: '', price: '', itemType: '', email:'' })
+        item.useraccount = props.user.id
+        setItem({name: '', image: '', description: '', price: '', itemType: '', useraccount:'' })
     }
 
     return (
@@ -36,6 +36,7 @@ const New = (props) => {
             <br />
             <label htmlFor="itemType">Item Type: </label>
             <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
+            <input type="text" name="useraccount" defaultValue={props.user.id} onChange={handleChange}/>
             <input className='newButton' type="submit"/>
       </form>
     </>
