@@ -41,30 +41,38 @@
   }
 }
 
-.card{
+.card {
   border: 1px solid;
   max-width: 25em;
   min-width: 25em;
   border-radius: 30px;
   margin: 1rem;
-  background-color:rgba(255,255,255, 0.5);
+  background-color:rgba(255,255,255,0.1);
   display: inline-block;
 }
 
-.card:hover{
+.card:hover {
   transform: scale(1.08);
   box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
 }
-.card img{
-  width: inherit;
+.card img {
+  width: 100%;
   border-top-right-radius: inherit;
   border-top-left-radius: inherit;
   z-index: -1;
 }
 
-.cardDeck{
+.cardDeck {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-around;
+}
+
+.newForm {
+  font-size: 12px;
+}
+
+.loginForm {
+  text-align: center;
 }

@@ -20,8 +20,8 @@ const Login = (props) => {
                 <input className="button" placeholder="Email" type="text" name="email" value={user.email} onChange={handleChange}></input>
                 <input className="button" placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange}></input>
                 <br/>
-                <input type="submit"></input>
-                {props.loginSuccess ? <button className="button" onClick={props.goBack}> Go Back</button> : null}
+                <input className='button btn-outline-dark btn'type="submit"></input>
+                {props.loginSuccess ? <button className="button btn-outline-dark btn" onClick={props.goBack}> Go Back</button> : null}
             </form>
         </div>
     )
