@@ -97,8 +97,6 @@ button {
   width: 150px;
   margin-top: 1vw;
 }
-<<<<<<< HEAD
-=======
 
 .techy {
   font-family: 'Russo One', sans-serif;
@@ -107,4 +105,12 @@ button {
 .actualCards {
   font-family: 'Chakra Petch', sans-serif;
 }
->>>>>>> 5110fa128e0b9d5fda393d8047b1b1a70a99d8f7
+
+.container {
+  text-align: center;
+}
+
+.newInput {
+  text-align: center;
+  right: 1px;
+}
