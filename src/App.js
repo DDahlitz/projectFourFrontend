@@ -177,7 +177,6 @@ const logout = () => {
         })
         .map((item) => {
           return (
-<<<<<<< HEAD
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
               <img src = {item.image} />
@@ -187,56 +186,24 @@ const logout = () => {
               <Edit handleUpdate={handleUpdate} item={item} />
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
-=======
-            <div className = "card" class="card mb-3">
-                <div class="row g-0 frontPage">
-                  <div class="col-4">
-                    <div class="card-body">
-                      <img src={item.image} class="img-fluid rounded-start" alt="..."/>
-                      <h5 class="card-title">{item.name}</h5>
-                      <p class="card-text">{item.description}</p>
-                      <p class="card-text">Price: {item.price}</p>
-                      <p class="card-text">Type: {item.itemType}</p>
-                      <Edit handleUpdate={handleUpdate} item={item}/>
-                      <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
->>>>>>> e7dd34034af7ee52718badb713c48655903d1e98
           )
         })}
 
         {showProduct ? null 
         : 
-        <div className = "cardDeck">
+        <>
           {products.map((item) => {
             return (
-<<<<<<< HEAD
               <div key = {item.id}>
                 <h4> Name: {item.name}</h4>
                 <img src = {item.image} />
                 <h6> Description: {item.description} </h6>
                 <h4> Price: ${item.price} </h4>
                 <h5> Item Type: {item.itemType} </h5>
-=======
-              <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
-                <div class="row g-0 frontPage">
-                  <div class="col-4">
-                    <div class="card-body">
-                      <img src={item.image} class="img-fluid rounded-start" alt="..."/>
-                      <h5 class="card-title">{item.name}</h5>
-                      <p class="card-text">{item.description}</p>
-                      <p class="card-text">Price: {item.price}</p>
-                      <p class="card-text">Type: {item.itemType}</p>
-                    </div>
-                  </div>
-                </div>
->>>>>>> e7dd34034af7ee52718badb713c48655903d1e98
               </div>
             )
           })}
-        </div>
+        </>
         }
           </div>
     </>
