@@ -151,7 +151,7 @@ const logout = () => {
   return (
     <>
       <div className = 'container'>
-        {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT:</h2></div>}
+        {loginHeader ? null : <div><h1 className = "techy">TECHY</h1><h2 className="createAnAccount">CREATE AN ACCOUNT:</h2></div>}
         {displayLogin ? null : <button className = 'button btn-outline-dark btn' onClick={showPage}>Create Account</button>}
         {displayLogin ? null : <button className='button btn-outline-dark btn' onClick={() => {
                 showloginAndHideCreate()
@@ -162,7 +162,7 @@ const logout = () => {
         <br/>
       </div>
       <div className="container">
-              {displayLogin ? <h1>TECHY</h1> : null}
+              {displayLogin ? <h1 className = "techy">TECHY</h1> : null}
               {showProduct ? <h4>Welcome to Techy, {currentUser.email}!</h4> : null}
               {loginSuccess ? <h2>Log In Below</h2> : null}
       </div>
@@ -172,7 +172,7 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
         <br/>
-        <div className = "cardDeck">
+        <div className = "cardDeck actualCards">
         {products.filter((item) => {
           if (item.useraccount == user.id){
             return item
@@ -198,7 +198,7 @@ const logout = () => {
 
         {showProduct ? null 
         : 
-        <div className = "cardDeck">
+        <div className = "cardDeck actualCards">
           {products.map((item) => {
             return (
               <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
