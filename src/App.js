@@ -148,30 +148,27 @@ const logout = () => {
   setLoginHeader(false)
 }
 
+
   return (
     <>
       <div className = 'container'>
-        {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT:</h2></div>}
-        {displayLogin ? null : <button className = 'button btn-outline-dark btn' onClick={showPage}>Create Account</button>}
-        {displayLogin ? null : <button className='button btn-outline-dark btn' onClick={() => {
+        {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT</h2></div>}
+        {displayLogin ? null : <button className = 'button' onClick={showPage}>Create Account</button>}
+        {displayLogin ? null : <button className='button' onClick={() => {
                 showloginAndHideCreate()
               }}>Login</button>}
         {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
         </> : null}
-        <br/>
-        <br/>
       </div>
       <div className="container">
-              {displayLogin ? <h1>TECHY</h1> : null}
+              {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
               {showProduct ? <h4>Welcome to Techy, {currentUser.email}!</h4> : null}
-              {loginSuccess ? <h2>Log In Below</h2> : null}
+              {loginSuccess ? <h5>Log In Here</h5> : null}
       </div>
-      <br/>
       <div className = "loginForm">
         {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
-        <br/>
         <div className = "cardDeck">
         {products.filter((item) => {
           if (item.useraccount == user.id){
@@ -180,19 +177,20 @@ const logout = () => {
         })
         .map((item) => {
           return (
-            <div className = "card mb-3" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <img src={item.image} alt="..."/>
-              <div className="row g-0 frontPage">
-                  <div className="card-body">
-                    <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">{item.description}</p>
-                    <p className="card-text">Price: ${item.price}</p>
-                    <p className="card-text">Type: {item.itemType}</p>
-                        <Edit handleUpdate={handleUpdate} item={item}/>
-                        <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+            <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
+            <div class="row g-0 frontPage">
+                <div class="card-body">
+                  <img src={item.image} class="img-fluid rounded-start" alt="..."/>
+                  <h5 class="card-title">{item.name}</h5>
+                  <p class="card-text">{item.description}</p>
+                  <p class="card-text">Price: {item.price}</p>
+                  <p class="card-text">Type: {item.itemType}</p>
+                      <Edit handleUpdate={handleUpdate} item={item}/>
+                      <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+                    </div>
                   </div>
-              </div>
-            </div>
+                </div>
+
           )
         })}</div>
 
@@ -202,12 +200,12 @@ const logout = () => {
           {products.map((item) => {
             return (
               <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
-                <img src={item.image} alt="..."/>
                 <div class="row g-0 frontPage">
                     <div class="card-body">
+                      <img src={item.image} class="img-fluid rounded-start" alt="..."/>
                       <h5 class="card-title">{item.name}</h5>
                       <p class="card-text">{item.description}</p>
-                      <p class="card-text">Price: ${item.price}</p>
+                      <p class="card-text">Price: {item.price}</p>
                       <p class="card-text">Type: {item.itemType}</p>
                     </div>
                   </div>
@@ -218,7 +216,7 @@ const logout = () => {
         }
           </div>
     </>
-)
+  )
 }
 
 export default App;
