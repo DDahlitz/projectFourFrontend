@@ -177,15 +177,13 @@ const logout = () => {
         })
         .map((item) => {
           return (
-            <div key = {item.id}>
-              <h4> Name: {item.name}</h4>
-              <img src = {item.image} />
-              <h6> Description: {item.description} </h6>
-              <h4> Price: {item.price} </h4>
-              <h5> Item Type: {item.itemType} </h5>
-              <Edit handleUpdate={handleUpdate} item={item} />
-              <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
-            </div>
+            <div className="card shadow p-3 mb-5 bg-body rounded">
+<p className="card-text name">Name: {item.name}</p>
+<p className="card-text">Description: {item.description}</p>
+<p className="card-text">Price: {item.price}</p>
+<p className="card-text">Item Type: {item.itemType}</p>
+<img src = {item.image}/>
+</div>
           )
         })}
 
@@ -213,3 +211,4 @@ const logout = () => {
 }
 
 export default App;
+
