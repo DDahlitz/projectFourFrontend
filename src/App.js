@@ -134,7 +134,7 @@ const logout = () => {
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
         {products.filter((potato) => {
-          if (potato.email == user.email) {
+          if (potato.email === user.email) {
             return potato
           }
         })
