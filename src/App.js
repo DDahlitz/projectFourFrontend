@@ -156,9 +156,10 @@ const logout = () => {
         {displayLogin ? null : <button className='button btn-outline-dark btn' onClick={() => {
                 showloginAndHideCreate()
               }}>Login</button>}
-        {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
+        {showProduct ? <><button className="button btn-outline-dark btn" onClick={logout}>Log Out</button>
         </> : null}
         <br/>
+        {showProduct ? <button className="button btn-outline-danger btn" onClick={handleDeleteUser}>Delete Account and All Listed Items</button> : null} 
         <br/>
       </div>
       <div className="container">
