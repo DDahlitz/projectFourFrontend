@@ -111,6 +111,7 @@ const App = () => {
     setShowProduct(true);
   };
 
+<<<<<<< HEAD
   const goBack = () => {
     setLoginHeader(false);
     setDisplayLogin(false);
@@ -124,6 +125,21 @@ const App = () => {
     setDisplayLogin(false);
     setLoginHeader(false);
   };
+=======
+const goBack =() => {
+  setLoginHeader(false)
+  setDisplayLogin(false)
+  setLoginSuccess(false)
+}
+
+const logout = () => {
+  setUser([])
+  setCurrentUser([])
+  setShowProduct(false)
+  setDisplayLogin(false)
+  setLoginHeader(false)
+}
+>>>>>>> 411fac53c81f381c395931829192a6e96315862b
 
   return (
     <>
@@ -158,6 +174,7 @@ const App = () => {
         ) : null}
       </div>
       <div className="container">
+<<<<<<< HEAD
         {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
         {showProduct ? <h4>Welcome to Techy, {user.email}!</h4> : null}
         {loginSuccess ? <h5>Log In Here</h5> : null}
@@ -167,6 +184,49 @@ const App = () => {
           <div>
             <AddUser handleNewUser={handleNewUser} />
             <hr />
+=======
+              {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
+              {showProduct ? <h4>Welcome to Techy, {currentUser.email}!</h4> : null}
+              {loginSuccess ? <h5>Log In Here</h5> : null}
+      </div>
+      <div className = "loginForm">
+        {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
+        {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
+        {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
+
+        {products.filter((potato) => {
+          if (potato.email == user.email) {
+            return potato
+          }
+        })
+        .map((item) => {
+          return (
+            <div key = {item.id}>
+              <h4> Name: {item.name}</h4>
+              <img src = {item.image} />
+              <h6> Description: {item.description} </h6>
+              <h4> Price: {item.price} </h4>
+              <h5> Item Type: {item.itemType} </h5>
+              <Edit handleUpdate={handleUpdate} item={item} />
+              <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+            </div>
+          )
+        })}
+
+        {/* {products.map((item) => {
+          return (
+            <div key = {item.id}>
+              <h4> Name: {item.name}</h4>
+              <img src = {item.image} />
+              <h6> Description: {item.description} </h6>
+              <h4> Price: {item.price} </h4>
+              <h5> Item Type: {item.itemType} </h5>
+              <Edit handleUpdate={handleUpdate} item={item} />
+              <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
+            </div>
+          )
+        })} */}
+>>>>>>> 411fac53c81f381c395931829192a6e96315862b
           </div>
         ) : null}
         {loginSuccess ? (
