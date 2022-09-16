@@ -1,12 +1,26 @@
+<<<<<<< HEAD
 import "./App.css";
 import { useState, useEffect, isValidElement } from "react";
 import React from "react";
 import axios from "axios";
+=======
+import './App.css'
+import {useState, useEffect, isValidElement} from 'react'
+import React from 'react'
+import axios from 'axios'
+
+import Edit from './components/Edit'
+import New from './components/New'
+
+import Login from './components/Login'
+import AddUser from './components/AddUser'
+>>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
 
 import Edit from "./components/Edit";
 import New from "./components/New";
 import Login from "./components/Login";
 import AddUser from "./components/AddUser";
+
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -19,6 +33,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState([]);
   const [newUser, setNewUser] = useState([]);
 
+<<<<<<< HEAD
   const getProducts = () => {
     axios
       .get("http://localhost:8000/api/products")
@@ -85,10 +100,69 @@ const App = () => {
       .then((response) => {
         setNewUser([...newUser, response.data], (err) => console.error(err));
         alert("ACCOUNT CREATED, NOW LOGIN");
+=======
+
+
+
+// ========GET PRODUCTS=======
+
+const getProducts = () => {
+  axios.get('http://localhost:8000/api/products').then(
+    (response) => setProducts(response.data),
+    (err) => console.error(err),
+  ).catch((error) => console.error(error))
+}
+
+// ========    CREATE PRODUCTS   =======
+
+const handleCreate = (addItem) => {
+  // let nextId = products[products.length - 1].id + 1
+  axios.post('http://localhost:8000/api/products', addItem)
+    .then((response) => {
+      // addItem.id = nextId
+      setProducts([...products, response.data])
+    })
+}
+
+// ========    DELETE PRODUCTS   =======
+
+const handleDelete = (deletedItem) => {
+  axios.delete('http://localhost:8000/api/products/' + deletedItem.id)
+  .then ((response) => {
+    setProducts (products.filter( item => item.id !== deletedItem.id))
+  })
+}
+
+// ========    UPDATE PRODUCTS   =======
+
+const handleUpdate = (editItem) => {
+  axios
+    .put('http://localhost:8000/api/products/' + editItem.id, editItem)
+    .then((response) => {
+      setProducts(products.map((item) => {
+        return item.id !== editItem.id ? item : editItem
+      }))
+    })
+}
+
+
+
+const handleLogin = (findUser) => {
+  axios.put('http://localhost:8000/api/useraccount/login' , findUser)
+  .then((response) => {
+    if (response.data.email == null) {
+      alert('Email and Password Do Not Match')
+    } else {
+      setUser(response.data)
+      axios
+      .get('http://localhost:8000/api/useraccount/' + response.data.id).then((response) => {
+        setCurrentUser(response.data)
+>>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
       })
       .catch((error) => alert("Username already taken"));
   };
 
+<<<<<<< HEAD
   useEffect(() => {
     getProducts();
   }, []);
@@ -99,6 +173,41 @@ const App = () => {
     setShow(true);
     setShowProduct(false);
   };
+=======
+// ======== DELETE USER AND ALL ASSOCIATED PRODUCTS =======
+
+const handleDeleteUser = () => {
+  products.filter((deletedProducts) => {
+    if(deletedProducts.email == user.email) {
+      // console.log(deletedProducts.id)
+      axios.delete('http://localhost:8000/api/products/' + deletedProducts.id)
+    }
+  })
+  axios.delete('http://localhost:8000/api/useraccount/' + user.id)
+  .then(() => {
+    setUser([])
+    setCurrentUser([])
+    setShowProduct(false)
+    setDisplayLogin(false)
+    setLoginHeader(false)
+  })
+}
+
+
+const handleNewUser = (addUser) => {
+  axios.post('http://localhost:8000/api/useraccount', addUser)
+  .then(response => {
+    setNewUser([...newUser, response.data],
+    (err) => console.error(err))
+    alert("ACCOUNT CREATED, NOW LOGIN")
+  }).catch((error) => alert('Username already taken'))
+}
+
+
+useEffect(() => {
+  getProducts()
+}, []) 
+>>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
 
   const showloginAndHideCreate = () => {
     setDisplayLogin(true);
@@ -140,6 +249,7 @@ const logout = () => {
   setLoginHeader(false)
 }
 >>>>>>> 411fac53c81f381c395931829192a6e96315862b
+
 
   return (
     <>
@@ -194,9 +304,10 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
-        {products.filter((potato) => {
-          if (potato.email == user.email) {
-            return potato
+        {/* {products.filter((item) => {
+          if (item.useraccount == user.id
+            .map()) {
+            return item
           }
         })
         .map((item) => {
@@ -211,9 +322,9 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })}
+        })} */}
 
-        {/* {products.map((item) => {
+        {products.map((item) => {
           return (
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
@@ -225,8 +336,12 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
+<<<<<<< HEAD
         })} */}
 >>>>>>> 411fac53c81f381c395931829192a6e96315862b
+=======
+        })}
+>>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
           </div>
         ) : null}
         {loginSuccess ? (
