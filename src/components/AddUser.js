@@ -26,8 +26,7 @@ const AddUser = (props) => {
                 <input className="addUserBox" type="password" name="password" value={user.password} onChange={handleUserChange}/>
                 <div id="passwordHelpBlock" class="form-text">Your password must be 8-1000 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
                 <br/>
-                <br/>
-                <input className="addUserButton" type="submit"/>
+                <input className="addUserButton button btn-outline-dark btn" type="submit"/>
             </form>
         </>
     )

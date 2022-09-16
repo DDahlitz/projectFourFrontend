@@ -148,13 +148,12 @@ const logout = () => {
   setLoginHeader(false)
 }
 
-
   return (
     <>
       <div className = 'container'>
         {loginHeader ? null : <div><h1>TECHY</h1><h2>CREATE AN ACCOUNT:</h2></div>}
-        {displayLogin ? null : <button className = 'button' onClick={showPage}>Create Account</button>}
-        {displayLogin ? null : <button className='button' onClick={() => {
+        {displayLogin ? null : <button className = 'button btn-outline-dark btn' onClick={showPage}>Create Account</button>}
+        {displayLogin ? null : <button className='button btn-outline-dark btn' onClick={() => {
                 showloginAndHideCreate()
               }}>Login</button>}
         {showProduct ? <><button className="button-primary" onClick={logout}>Log Out</button>
@@ -172,6 +171,7 @@ const logout = () => {
         {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
+        <br/>
         <div className = "cardDeck">
         {products.filter((item) => {
           if (item.useraccount == user.id){
