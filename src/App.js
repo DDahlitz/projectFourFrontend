@@ -169,7 +169,7 @@ const logout = () => {
         {show ? <div><AddUser handleNewUser={handleNewUser} /><hr/></div> : null}
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
-
+        <div className = "cardDeck">
         {products.filter((item) => {
           if (item.useraccount == user.id){
             return item
@@ -177,23 +177,22 @@ const logout = () => {
         })
         .map((item) => {
           return (
-            <div className = "card" class="card mb-3">
-                <div class="row g-0 frontPage">
-                  <div class="col-4">
-                    <div class="card-body">
-                      <img src={item.image} class="img-fluid rounded-start" alt="..."/>
-                      <h5 class="card-title">{item.name}</h5>
-                      <p class="card-text">{item.description}</p>
-                      <p class="card-text">Price: {item.price}</p>
-                      <p class="card-text">Type: {item.itemType}</p>
+            <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
+            <div class="row g-0 frontPage">
+                <div class="card-body">
+                  <img src={item.image} class="img-fluid rounded-start" alt="..."/>
+                  <h5 class="card-title">{item.name}</h5>
+                  <p class="card-text">{item.description}</p>
+                  <p class="card-text">Price: {item.price}</p>
+                  <p class="card-text">Type: {item.itemType}</p>
                       <Edit handleUpdate={handleUpdate} item={item}/>
                       <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
                     </div>
                   </div>
                 </div>
-              </div>
+
           )
-        })}
+        })}</div>
 
         {showProduct ? null 
         : 
