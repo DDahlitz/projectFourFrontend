@@ -18,6 +18,9 @@ const New = (props) => {
     return (
         <>
         <form className="newForm" onSubmit={handleSubmit}>
+            <div className='hidden'>
+                {item.useraccount = props.user.id}
+            </div>
             <label htmlFor="name">Name: </label>
             <input className='newBox' type="text" name="name" value={item.name} onChange={handleChange} />
             <br />
@@ -36,7 +39,6 @@ const New = (props) => {
             <br />
             <label htmlFor="itemType">Item Type: </label>
             <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
-            <input type="text" name="useraccount" defaultValue={props.user.id} onChange={handleChange}/>
             <input className='newButton' type="submit"/>
       </form>
     </>
