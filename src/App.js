@@ -194,6 +194,7 @@ const logout = () => {
         <>
           {products.map((item) => {
             return (
+<<<<<<< HEAD
               <div key = {item.id}>
                 <h4> Name: {item.name}</h4>
                 <img src = {item.image} />
@@ -201,6 +202,19 @@ const logout = () => {
                 <h4> Price: ${item.price} </h4>
                 <h5> Item Type: {item.itemType} </h5>
               </div>
+=======
+              <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
+                <div class="row g-0 frontPage">
+                    <div class="card-body">
+                      <img src={item.image} class="img-fluid rounded-start" alt="..."/>
+                      <h5 class="card-title">{item.name}</h5>
+                      <p class="card-text">{item.description}</p>
+                      <p class="card-text">Price: {item.price}</p>
+                      <p class="card-text">Type: {item.itemType}</p>
+                    </div>
+                  </div>
+                </div>
+>>>>>>> 04980677e9c331c5471cd1b764a4bde69b676a8b
             )
           })}
         </>
