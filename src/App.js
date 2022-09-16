@@ -189,7 +189,7 @@ const logout = () => {
           )
         })}
 
-        {/* {products.map((item) => {
+        {products.map((item) => {
           return (
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
@@ -201,7 +201,7 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })} */}
+        })}
           </div>
     </>
   )
