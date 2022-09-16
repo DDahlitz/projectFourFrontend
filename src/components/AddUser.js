@@ -17,13 +17,14 @@ const AddUser = (props) => {
 
     return (
         <>
-            <form className="addUserForm" onSubmit={handleUserSubmit}>
+            <form className="addUserForm form-control-sm" onSubmit={handleUserSubmit} aria-describedby="passwordHelpBlock">
                 <label htmlFor="email">Email:</label>
                 <input className="addUserBox" type="text" name="email" value={user.email} onChange={handleUserChange}/>
                 <br/>
                 <br/>
                 <label htmlFor="password">Password:</label>
                 <input className="addUserBox" type="password" name="password" value={user.password} onChange={handleUserChange}/>
+                <div id="passwordHelpBlock" class="form-text">Your password must be 8-1000 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
                 <br/>
                 <br/>
                 <input className="addUserButton" type="submit"/>

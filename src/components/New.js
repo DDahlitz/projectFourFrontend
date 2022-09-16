@@ -17,7 +17,7 @@ const New = (props) => {
 
     return (
         <>
-        <form className="newForm" onSubmit={handleSubmit}>
+        <form className="newForm form-control-sm" onSubmit={handleSubmit}>
             <div className='hidden'>
                 {item.useraccount = props.user.id}
             </div>
