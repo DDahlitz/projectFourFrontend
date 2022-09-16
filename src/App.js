@@ -202,7 +202,6 @@ const logout = () => {
             return (
               <div className = "card" style={{ width: '30%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}class="card mb-3">
                 <div class="row g-0 frontPage">
-                  <div class="col-4">
                     <div class="card-body">
                       <img src={item.image} class="img-fluid rounded-start" alt="..."/>
                       <h5 class="card-title">{item.name}</h5>
@@ -212,7 +211,6 @@ const logout = () => {
                     </div>
                   </div>
                 </div>
-              </div>
             )
           })}
         </div>
