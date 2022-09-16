@@ -17,7 +17,6 @@ const New = (props) => {
 
     return (
         <>
-<<<<<<< HEAD
             <form className="newForm" onSubmit={handleSubmit}>
                 <div className='hidden'>
                     {item.useraccount = props.user.id}
@@ -43,35 +42,6 @@ const New = (props) => {
                 <input className='newButton' type="submit" />
             </form>
         </>
-=======
-        <form className="newForm form-control-sm" onSubmit={handleSubmit}>
-            <div className='hidden'>
-                {item.useraccount = props.user.id}
-            </div>
-            <label htmlFor="name">Name: </label>
-            <input className='newBox' type="text" name="name" value={item.name} onChange={handleChange} />
-            <br />
-            <br />
-            <label htmlFor="image">Image: </label>
-            <input className='newBox' type="text" name="image" value={item.image} onChange={handleChange} />
-            <br />
-            <br />
-            <label htmlFor="description">Description: </label>
-            <input className='newBox' type="text" name="description" value={item.description} onChange={handleChange} />
-            <br />
-            <br />
-            <label htmlFor="price">Price: </label>
-            <input className='newBox' type="number" name="price" value={item.price} onChange={handleChange} />
-            <br />
-            <br />
-            <label htmlFor="itemType">Item Type: </label>
-            <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
-            <br />
-            <br />
-            <input className='newButton button btn-outline-dark btn' type="submit"/>
-      </form>
-    </>
->>>>>>> 5693c1d639c19af86ed561046af06bd0dce18192
     )
 }
 
