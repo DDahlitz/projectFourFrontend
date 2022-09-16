@@ -181,7 +181,7 @@ const logout = () => {
               <h4> Name: {item.name}</h4>
               <img src = {item.image} />
               <h6> Description: {item.description} </h6>
-              <h4> Price: {item.price} </h4>
+              <h4> Price: ${item.price} </h4>
               <h5> Item Type: {item.itemType} </h5>
               <Edit handleUpdate={handleUpdate} item={item} />
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
