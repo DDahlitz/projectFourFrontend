@@ -75,4 +75,25 @@
 
 .loginForm {
   text-align: center;
+  display: inline-block;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+}
+
+button {
+  margin-right: 2vw;
+}
+
+.loginButton {
+  margin-right: 1vw;
+}
+
+.newInput {
+  display: block;
+  width: 150px;
+  margin-top: 1vw;
 }
