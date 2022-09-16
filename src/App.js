@@ -159,12 +159,6 @@ const logout = () => {
               }}>Login</button>}
         {showProduct ? <><button className="button btn-outline-dark btn" onClick={logout}>Log Out</button>
         </> : null}
-<<<<<<< HEAD
-=======
-        <br/>
-        {showProduct ? <button className="button btn-outline-danger btn" onClick={handleDeleteUser}>Delete Account and All Listed Items</button> : null} 
-        <br/>
->>>>>>> 81bcd587869d08b1ee2455a67d5b5728df25a9c5
       </div>
       <div className="container">
               {displayLogin ? <h2>YOUR TECHY PAGE</h2> : null}
