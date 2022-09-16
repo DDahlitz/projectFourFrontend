@@ -36,7 +36,10 @@ const New = (props) => {
             <br />
             <label htmlFor="itemType">Item Type: </label>
             <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
-            <input type="text" name="useraccount" defaultValue={props.user.id} onChange={handleChange}/>
+            <br />
+            <br />
+            <label htmlFor="id">useraccount/id: </label>
+            <input type="text" name="useraccount" defaultValue={props.user.id} key={props.user.id} onChange={handleChange}/>
             <input className='newButton' type="submit"/>
       </form>
     </>

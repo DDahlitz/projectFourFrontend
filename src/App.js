@@ -170,16 +170,10 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
-<<<<<<< HEAD
-        {products.filter((potato) => {
-          if (potato.email === user.email) {
-            return potato
-=======
         {/* {products.filter((item) => {
           if (item.useraccount == user.id
             .map()) {
             return item
->>>>>>> f96f591260d1e7cbd4f62132a47e5189dba8060d
           }
         })
         .map((item) => {
