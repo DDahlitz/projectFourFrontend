@@ -170,9 +170,8 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
-        {/* {products.filter((item) => {
-          if (item.useraccount == user.id
-            .map()) {
+        {products.filter((item) => {
+          if (item.useraccount == user.id){
             return item
           }
         })
@@ -188,9 +187,9 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })} */}
+        })}
 
-        {products.map((item) => {
+        {/* {products.map((item) => {
           return (
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
@@ -202,7 +201,7 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })}
+        })} */}
           </div>
     </>
   )
