@@ -105,3 +105,8 @@ button {
 .actualCards {
   font-family: 'Chakra Petch', sans-serif;
 }
+
+img {
+  max-width: 20vw;
+  max-height: 20vw;
+}
