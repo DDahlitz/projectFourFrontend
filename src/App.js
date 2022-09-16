@@ -37,10 +37,10 @@ const getProducts = () => {
 // ========    CREATE PRODUCTS   =======
 
 const handleCreate = (addItem) => {
-  let nextId = products[products.length - 1].id + 1
+  // let nextId = products[products.length - 1].id + 1
   axios.post('http://localhost:8000/api/products', addItem)
     .then((response) => {
-      addItem.id = nextId
+      // addItem.id = nextId
       setProducts([...products, response.data])
     })
 }
@@ -170,9 +170,10 @@ const logout = () => {
         {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={loginSuccess} goBack={goBack} /> : null}
         {showProduct ? <div><h4>Add a New Product</h4><New user={user} handleCreate={handleCreate} /></div> : null}
 
-        {products.filter((potato) => {
-          if (potato.email == user.email) {
-            return potato
+        {/* {products.filter((item) => {
+          if (item.useraccount == user.id
+            .map()) {
+            return item
           }
         })
         .map((item) => {
@@ -187,9 +188,9 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })}
+        })} */}
 
-        {/* {products.map((item) => {
+        {products.map((item) => {
           return (
             <div key = {item.id}>
               <h4> Name: {item.name}</h4>
@@ -201,7 +202,7 @@ const logout = () => {
               <button onClick={() => {handleDelete(item)}} value={item.id}>Delete</button>
             </div>
           )
-        })} */}
+        })}
           </div>
     </>
   )
