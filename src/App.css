@@ -107,6 +107,11 @@ button {
 }
 
 img {
+<<<<<<< HEAD
   max-width: 12vw;
   max-height: 12vw;
+=======
+  max-width: 20vw;
+  max-height: 20vw;
+>>>>>>> 86fb690f9cdae907a718ac8a30569a129782df07
 }
