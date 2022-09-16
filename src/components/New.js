@@ -41,7 +41,7 @@ const New = (props) => {
             <input className='newBox' type="text" name="itemType" value={item.itemType} onChange={handleChange}/>
             <br />
             <br />
-            <input className='newButton' type="submit"/>
+            <input className='newButton button btn-outline-dark btn' type="submit"/>
       </form>
     </>
     )
