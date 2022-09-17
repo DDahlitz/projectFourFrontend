@@ -17,7 +17,7 @@ const Footer = () => {
                             <h6>Roman Tafelski</h6>
                             <ul className="footer-links">
                                 <li><a href="https://www.linkedin.com/in/roman-tafelski/" target="_blank">LinkedIn</a></li>
-                                <li><a href="mailto:romantafelski18@gmail.com"target="_blank">Email Isaac</a></li>
+                                <li><a href="mailto:romantafelski18@gmail.com"target="_blank">Email Roman</a></li>
                             </ul>
                         </div>
                         <div className="col-xs-12 col-md-4">
