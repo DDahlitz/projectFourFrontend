@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import Edit from './components/Edit'
 import New from './components/New'
+import Footer from './components/Footer'
 
 import Login from './components/Login'
 import AddUser from './components/AddUser'
@@ -220,7 +221,7 @@ const logout = () => {
         <br/>
           {showProduct ? <button className="button btn-outline-danger btn" onClick={handleDeleteUser}>Delete Account and All Listed Items</button> : null} 
           </div>
-
+        <Footer/>
     </>
 )
 }
