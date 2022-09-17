@@ -89,7 +89,7 @@ const handleLogin = (findUser) => {
 
 // ======== DELETE USER AND ALL ASSOCIATED PRODUCTS =======
 
-const handleDeleteUser = () => {
+const handleDeleteUser = (e) => {
   products.filter((deletedProducts) => {
     if(deletedProducts.email == user.email) {
       // console.log(deletedProducts.id)
@@ -97,7 +97,7 @@ const handleDeleteUser = () => {
     }
   })
   axios.delete('http://localhost:8000/api/useraccount/' + user.id)
-  .then(() => {
+  .then((event) => {
     setUser([])
     setCurrentUser([])
     setShowProduct(false)
