@@ -10,21 +10,21 @@ const Footer = () => {
                             <h6>Derrick Dahlitz</h6>
                             <ul className="footer-links">
                                 <li><a href="https://www.linkedin.com/in/derrick-dahlitz/" target="_blank">LinkedIn</a></li>
-                                <li><a href="mailto:ddahlitz@gmail.com"target="_blank">Email Derrick</a></li>
+                                <li><a href="mailto:ddahlitz@gmail.com" target="_blank">Email Derrick</a></li>
                             </ul>
                         </div>
                         <div className="col-xs-12 col-md-4">
                             <h6>Roman Tafelski</h6>
                             <ul className="footer-links">
                                 <li><a href="https://www.linkedin.com/in/roman-tafelski/" target="_blank">LinkedIn</a></li>
-                                <li><a href="mailto:romantafelski18@gmail.com"target="_blank">Email Roman</a></li>
+                                <li><a href="mailto:romantafelski@gmail.com" target="_blank">Email Roman</a></li>
                             </ul>
                         </div>
                         <div className="col-xs-12 col-md-4">
                             <h6>Miguel Castaneda</h6>
                             <ul className="footer-links">
                                 <li><a href="https://www.linkedin.com/in/migcastaneda/" target="_blank">LinkedIn</a></li>
-                                <li><a href="mailto:m.castaneda224@gmail.com"target="_blank">Email Miguel</a></li>
+                                <li><a href="mailto:m.castaneda224@gmail.com" target="_blank">Email Miguel</a></li>
                             </ul>
                         </div>
                     </div>
