@@ -29,7 +29,7 @@ const App = () => {
 // ========GET PRODUCTS=======
 
 const getProducts = () => {
-  axios.get('https://secure-beyond-15495.herokuapp.com').then(
+  axios.get('https://secure-beyond-15495.herokuapp.com/api/products').then(
     (response) => setProducts(response.data),
     (err) => console.error(err),
   ).catch((error) => console.error(error))
@@ -39,7 +39,7 @@ const getProducts = () => {
 
 const handleCreate = (addItem) => {
   // let nextId = products[products.length - 1].id + 1
-  axios.post('https://secure-beyond-15495.herokuapp.com', addItem)
+  axios.post('https://secure-beyond-15495.herokuapp.com/api/products', addItem)
     .then((response) => {
       // addItem.id = nextId
       setProducts([...products, response.data])
@@ -49,7 +49,7 @@ const handleCreate = (addItem) => {
 // ========    DELETE PRODUCTS   =======
 
 const handleDelete = (deletedItem) => {
-  axios.delete('https://secure-beyond-15495.herokuapp.com/' + deletedItem.id)
+  axios.delete('https://secure-beyond-15495.herokuapp.com/api/products/' + deletedItem.id)
   .then ((response) => {
     setProducts (products.filter( item => item.id !== deletedItem.id))
   })
@@ -59,7 +59,7 @@ const handleDelete = (deletedItem) => {
 
 const handleUpdate = (editItem) => {
   axios
-    .put('https://secure-beyond-15495.herokuapp.com/' + editItem.id, editItem)
+    .put('https://secure-beyond-15495.herokuapp.com/api/products/' + editItem.id, editItem)
     .then((response) => {
       setProducts(products.map((item) => {
         return item.id !== editItem.id ? item : editItem
@@ -70,14 +70,14 @@ const handleUpdate = (editItem) => {
 
 
 const handleLogin = (findUser) => {
-  axios.put('https://secure-beyond-15495.herokuapp.com/login' , findUser)
+  axios.put('https://secure-beyond-15495.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
     if (response.data.email == null) {
       alert('Email and Password Do Not Match')
     } else {
       setUser(response.data)
       axios
-      .get('https://secure-beyond-15495.herokuapp.com/' + response.data.id).then((response) => {
+      .get('https://secure-beyond-15495.herokuapp.com/api/useraccount/' + response.data.id).then((response) => {
         setCurrentUser(response.data)
       })
     setShowProduct(true)
@@ -93,13 +93,13 @@ const handleDeleteUser = () => {
   products.filter((deletedProducts) => {
     if(deletedProducts.useraccount == user.id) {
       // console.log(deletedProducts.id)
-      axios.delete('https://secure-beyond-15495.herokuapp.com/' + deletedProducts.id)
+      axios.delete('https://secure-beyond-15495.herokuapp.com/api/products/' + deletedProducts.id)
       .then ((response) => {
         setProducts (products.filter( item => item.id !== deletedProducts.id))
       })
     }
   })
-  axios.delete('https://secure-beyond-15495.herokuapp.com/' + user.id)
+  axios.delete('https://secure-beyond-15495.herokuapp.com/api/useraccount/' + user.id)
   .then(() => {
     setUser([])
     setShowProduct(false)
@@ -110,7 +110,7 @@ const handleDeleteUser = () => {
 
 
 const handleNewUser = (addUser) => {
-  axios.post('https://secure-beyond-15495.herokuapp.com/', addUser)
+  axios.post('https://secure-beyond-15495.herokuapp.com/api/useraccount', addUser)
   .then(response => {
     setNewUser([...newUser, response.data],
     (err) => console.error(err))
