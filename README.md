@@ -17,7 +17,7 @@ https://github.com/migcast21/projectFourBackend
 As a user you are able to view all items that are for sale from the main page. You are able to create an accout with a unique email that is not currently in use. Your password created is encrypted. You are able to login and add, update, or delete items to your account individually.
 As a user you are able to delete your account. When the account is deleted all items you have created with your account get deleted, you are sent back to the login screen and all items you have created previously are removed.  
 
-### Technoligies Used
+### Technologies Used
   
 This website was made with:  
 * HTML   
