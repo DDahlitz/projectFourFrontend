@@ -24,7 +24,7 @@ const Footer = () => {
                             <h6>Miguel Castaneda</h6>
                             <ul className="footer-links">
                                 <li><a href="https://www.linkedin.com/in/migcastaneda/" target="_blank">LinkedIn</a></li>
-                                <li><a href="mailto:m.castaneda224@gmail.com" target="_blank">Email Miguel</a></li>
+                                <li><a href="mailto:miguel.castaneda.dev@gmail.com" target="_blank">Email Miguel</a></li>
                             </ul>
                         </div>
                     </div>
